@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center h-100">
+    <form [formGroup]="createPaymentForm" class="col-lg-6 col-md-9 col-sm-12">
+      <div class="row">
+        <div class="form-group col-12">
+          <label for="creditCardNumber" class="control-label">Credit card number <bdi class="required">*</bdi></label>
+          <input class="form-control" type="text" formControlName="creditCardNumber" placeholder="Eg: 1234-4567-6790-8908" >
+          <div *ngIf="canShowError('creditCardNumber')">
+            <p class="error-txt" *ngIf="hasError('creditCardNumber', 'required')">
+              Credit card number is required
+            </p>
+            <p class="error-txt" *ngIf="hasError('creditCardNumber', 'pattern')">
+              Credit card number should be 16 digits
+            </p>
+          </div>
+        </div>
+        <div class="form-group col-12">
+          <label for="cardholder" class="control-label">Card holder <bdi class="required">*</bdi></label>
+          <input class="form-control" type="text" formControlName="cardholder" placeholder="Eg: Jai Krishnan" >
+          <div *ngIf="canShowError('cardholder')">
+            <p class="error-txt" *ngIf="hasError('cardholder', 'required')">
+              Card holder name is required
+            </p>
+            <p class="error-txt" *ngIf="hasError('cardholder', 'pattern')">
+              Name should be 4 to 20 characters
+            </p>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <label for="expirationDate" class="control-label">Exp Date <bdi class="required">*</bdi></label>
+          <input class="form-control" type="date" formControlName="expirationDate">
+          <div *ngIf="canShowError('expirationDate')">
+            <p class="error-txt" *ngIf="hasError('expirationDate', 'required')">
+              Exp date is required
+            </p>
+            <p class="error-txt" *ngIf="hasError('expirationDate', 'expDate')">
+              Please select valid date
+            </p>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <label for="securityCode" class="control-label">Security Code</label>
+          <input class="form-control" type="text" formControlName="securityCode" placeholder="Eg: 123 or 656" >
+          <div *ngIf="canShowError('securityCode')">
+            <p class="error-txt" *ngIf="hasError('securityCode', 'pattern')">
+              Invalid security code
+            </p>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <label for="amount" class="control-label">Amount <bdi class="required">*</bdi></label>
+          <input class="form-control text-right" type="text" formControlName="amount" >
+          <div *ngIf="canShowError('amount')">
+            <p class="error-txt" *ngIf="hasError('amount', 'required')">
+              Amount is required
+            </p>
+            <p class="error-txt" *ngIf="hasError('amount', 'min')">
+              Please enter above 0
+            </p>
+          </div>
+        </div>
+        <div class="form-group col-12">
+          <button class="btn btn-info" type="submit" [disabled]="createPaymentForm.invalid" (click)="onSubmit()">Create
+            Payment</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

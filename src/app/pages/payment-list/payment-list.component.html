@@ -1,0 +1,20 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <th>Name</th>
+      <th>Card Number</th>
+      <th>Security Code</th>
+      <th>Exp Date</th>
+      <th>Amount</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of paymentList">
+        <td>{{p.cardholder}}</td>
+        <td>{{p.creditCardNumber}}</td>
+        <td>{{p.securityCode}}</td>
+        <td>{{p.expirationDate}}</td>
+        <td>{{p.amount}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
